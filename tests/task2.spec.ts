@@ -4,8 +4,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const baseURL = 'https://university.engenious.io/';
-const validEmail = process.env.TEST_EMAIL || 'valid@example.com';
-const validPassword = process.env.TEST_PASSWORD || 'ValidPassword123';
+const validEmail = 'valid@example.com';
+const validPassword = 'ValidPassword123';
 const invalidPassword = 'WrongPassword123';
 const invalidEmail = 'nonexistent@example.com';
 
@@ -21,7 +21,7 @@ test.describe('Login Tests on Engenious University', () => {
     await page.getByPlaceholder('Email').fill(validEmail);
     await page.getByPlaceholder('Password').fill(validPassword);
     await page.getByRole('button', { name: 'Login' }).click();
-    await expect(page.locator('text=Dashboard')).toBeVisible(); // Adjust as needed
+    await expect(page.locator('text=Dashboard')).toBeVisible(); 
   });
 
   test('TC02 - Login with Invalid Password', async ({ page }) => {
@@ -60,7 +60,7 @@ test.describe('Login Tests on Engenious University', () => {
       await page.getByPlaceholder('Email').fill(validEmail);
       await page.getByPlaceholder('Password').fill(invalidPassword);
       await page.getByRole('button', { name: 'Login' }).click();
-      await page.waitForTimeout(1000); // Slight delay between attempts
+      await page.waitForTimeout(1000); 
     }
     await expect(
       page.locator('text=Too many failed attempts')
