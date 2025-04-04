@@ -1,0 +1,36 @@
+# Node modules
+node_modules/
+
+# Playwright browser binaries
+/.playwright/
+
+# TypeScript
+*.tsbuildinfo
+*.tscoutputs
+
+# Dotenv
+.env
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE configurations (VSCode, JetBrains, etc.)
+.vscode/
+.idea/
+
+# Jest & Playwright reports
+coverage/
+test-results/
+playwright-report/
+
+# Lock files (optional - if you want to lock versions, leave these)
+package-lock.json
+yarn.lock
