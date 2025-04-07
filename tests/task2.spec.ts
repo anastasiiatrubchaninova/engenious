@@ -1,11 +1,10 @@
 import { test, expect, chromium } from '@playwright/test';
 import * as dotenv from 'dotenv';
-
 dotenv.config();
 
 const baseURL = 'https://university.engenious.io/';
-const validEmail = 'valid@example.com';
-const validPassword = 'ValidPassword123';
+const validEmail = process.env.TEST_EMAIL || 'valid@example.com';
+const validPassword = process.env.TEST_PASSWORD || 'ValidPassword123';
 const invalidPassword = 'WrongPassword123';
 const invalidEmail = 'nonexistent@example.com';
 
@@ -36,7 +35,7 @@ test.describe('Login Tests on Engenious University', () => {
     await page.getByPlaceholder('Email').fill(invalidEmail);
     await page.getByPlaceholder('Password').fill(validPassword);
     await page.getByRole('button', { name: 'Login' }).click();
-    await expect(page.locator('text=Invalid credentials!')).toBeVisible();
+    await expect(page.locator('text=Your password should have minimum eight characters, at least one uppercase letter, one lowercase letter and one digit')).toBeVisible();
   });
 
   test('TC04 - Login with Blank Fields', async ({ page }) => {
